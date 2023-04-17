@@ -1,24 +1,21 @@
 ///import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 
 import './App.css'
+import logo from '../src/image/twitter-rosa.png'
+
 
 function App() {
- 
   return (
-    <div className="App">
-      <div className='principal'>
-        <h1>AQUI COMIENZA NUESTRO PROYECTO</h1>
-        
-         
- </div>
-        
-        
- <h2>AQUI IMAGEN </h2>
-          
-
-    </div>
-  );
+    <div className='App'>
+      <div className='logo'>  
+      <h1>Aqui comienza nuestro proyecto</h1>
+          <img
+            className='logo'
+            src={logo}
+            alt='logo twitter' /> 
+      </div>
+      </div>
+  )
 }
 
 export default App
