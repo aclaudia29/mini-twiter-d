@@ -8,7 +8,7 @@ function App() {
   return (
     <div className='App'>
       <div className='logo'>  
-      <h1>Aqui comienza nuestro proyecto</h1>
+      <h1>Aqui comienza nuestro primer proyecto</h1>
           <img
             className='logo'
             src={logo}
