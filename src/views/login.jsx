@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import useServer from '../hooks/useServer.js'
 
 function Login() {
-  const { post } = useServer()
+  const { post, get } = useServer()
   const navigate = useNavigate()
 
   const handleSubmit = async e => {
@@ -10,7 +10,8 @@ function Login() {
 
     const credentials = Object.fromEntries(new FormData(e.target))
     const { data } = await post({ url: '/login', body: credentials })
-    if (data) return navigate('/')
+    const usr = data && await get({ url: '/user' })
+    if (usr) return navigate('/home')
   }
 
   return (

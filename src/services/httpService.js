@@ -13,7 +13,7 @@ async function httpService({ url, method = 'GET', token = null, body = null }) {
   }
 
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`
+    config.headers.Authorization = token
   }
 
   if (body) {
@@ -24,10 +24,10 @@ async function httpService({ url, method = 'GET', token = null, body = null }) {
     const response = await fetch(fullURL.href, config)
     const data = await response.json()
 
-    return { data, loading: false, error: data.error || null }
+    return { data, url, loading: false, error: data.error || null }
 
   } catch (error) {
-    return { data: null, loading: false, error }
+    return { data: null, loading: false, error, url }
   }
 }
 
