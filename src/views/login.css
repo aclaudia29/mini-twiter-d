@@ -1,0 +1,22 @@
+.button {
+    background-color: #FF69B4; 
+    color: #FFFFFF; 
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+  }
+
+  .formLogin {
+    width: 100%;
+    display: center
+  }
+  div {
+    margin: 5px;
+  }
+  label {
+    margin-right: 5px;
+  }
+  .password {
+    margin-left: 25px;
+  }
+  

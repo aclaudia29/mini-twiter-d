@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import useServer from '../hooks/useServer.js'
+import "./login.css"
 
 function Login() {
   const { post, get } = useServer()
@@ -15,9 +16,9 @@ function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='formLogin' onSubmit={handleSubmit}>
       <div>
-        <div>
+        <div className='email'>
           <label htmlFor="email">Email</label>
           <input
             id="email"
@@ -25,11 +26,11 @@ function Login() {
             type="email"
             autoComplete="email"
             required
-            placeholder="john@doe.com"
+            placeholder="ingresar email"
           />
         </div>
 
-        <div>
+        <div className='password'>
           <label htmlFor="password">Password</label>
           <input
             id="password"
@@ -37,13 +38,13 @@ function Login() {
             type="password"
             autoComplete="password"
             required
-            placeholder="123456"
+            placeholder="ingresar contraseña"
           />
         </div>
       </div>
 
-      <div>
-        <button type="submit"> Iniciar Sesión </button>
+      <div >
+        <button className='button' type="submit"> Iniciar Sesión </button>
       </div>
     </form>
   )

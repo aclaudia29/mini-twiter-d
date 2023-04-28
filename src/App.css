@@ -1,15 +1,17 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
+img {
+  max-width: 300px;
+} 
 
 h1 {
   font-size: 5;
   line-height: 1.1;
-  
-  font-size:xx-large
+  text-align:right;
+  font-size:0%
   
 }

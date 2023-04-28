@@ -1,7 +1,7 @@
 ///import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import logo from '../src/image/twitter-rosa.png'
 import './App.css'
+import logo from '../src/image/logo nuevo.jpeg'
 import Navbar from './components/Navbar'
 import { PrivateRoutes } from './components/PrivateRoutes'
 import Notifications from './components/Notifications'
@@ -16,8 +16,10 @@ function App() {
   
   return (
     <>
-      
       <Navbar />
+      {/* <h1>Mini Twitter</h1> */}
+      <img className='logo' src={logo} alt='logo twitter' /> 
+      
       <Notifications />
       
       <Routes>        
