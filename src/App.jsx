@@ -1,5 +1,5 @@
-///import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
+
 import './App.css'
 import logo from '../src/image/logo nuevo.jpeg'
 import Navbar from './components/Navbar'
@@ -7,13 +7,12 @@ import { PrivateRoutes } from './components/PrivateRoutes'
 import Notifications from './components/Notifications'
 
 //views
-import Index from './views/index'
 import Login from './views/login'
 import Home from './views/home'
 import useAuth from './hooks/useAuth'
 
 function App() {
-  
+  const {isAuthenticated} = useAuth()
   return (
     <>
       <Navbar />
@@ -23,9 +22,8 @@ function App() {
       <Notifications />
       
       <Routes>        
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-         <Route path="/home" element={<Home />} />
 
           <Route element={<PrivateRoutes />}>
           </Route>

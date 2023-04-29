@@ -14,8 +14,6 @@ const AuthProvider = ({ children }) => {
       ...user
     }
 
-    console.log(newUser)
-
     localStorage.setItem('user', JSON.stringify(newUser))
     setCurrentUser(newUser)
   }
