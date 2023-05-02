@@ -3,9 +3,10 @@ import useServer from "../hooks/useServer.js"
 import Homes from "../components/Homes.jsx"
 import {apiURL} from '../config.js'
 import useAuth from "../hooks/useAuth.js"
+import Tweet from "../components/Tweet.jsx"
 
 function Twitter() {
-    const { get, post } = useServer()
+    const { get, post, delete: destroy } = useServer()
     const { isAuthenticated, user } = useAuth() 
     const [twitters, setTwitter] = useState([])
     const [inputValue, setInputValue] = useState('')
@@ -13,6 +14,7 @@ function Twitter() {
     //aqui obterngo todos los twttes/retorna la data
     const getTwitts = async () => {
       const { data } = await get({ url: '/' })
+      console.log({data})
       setTwitter(data.data)
     }
 
@@ -37,6 +39,18 @@ function Twitter() {
       console.log(twitters)
     }, [twitters]) 
 
+    const likeTweetHandler = async (id) => {
+      const response = await post({url: `/tweet/${id}/like`})
+    }
+
+    const deletePostHandler = async (id) => {
+      const { data } = await destroy({ url: `/tweet/${id}` });
+      if (data.status === "ok") {
+        const newList = twitters.filter((twitter) => twitter.id !== id);
+        setTwitter(newList);
+      }
+    };
+
     return <>
        
       <h1>Twitters</h1>
@@ -52,14 +66,12 @@ function Twitter() {
 
       
 
-      {twitters && twitters.map(item => (
-        <div key={item.id}>
-          <p>{item.nombre} </p>
-          <a>{item.text} {item.email}</a>
-          <img src={`${apiURL}/uploads/${item.image}`} alt=" " />
-        </div>
+      {twitters && twitters.map((tweet) => (
+        <Tweet key={tweet.id} tweet={tweet} deleteTweet={deletePostHandler} likeTweet={likeTweetHandler}/>
       ))}
     </>
+
+    
 }
 
 export default Twitter

@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom'
+import { apiURL } from "../config";
+import useServer from "../hooks/useServer";
+import { useState } from "react";
 
    
-   function Homes({ home, deleteTodo, checkButton }) {
+   function Posts({ post, deletePost , checkButton }) {
 
-      // //const deleteButtonHandler = () => {
-      //   deleteTodo(todo.id)
-      // }
+
+    const deleteButtonHandler = (e) => {
+      deletePost(post.id);
+    };
     
      
     
@@ -23,4 +27,4 @@ import { Link } from 'react-router-dom'
     }
   
   
-  export default Homes
+  export default Posts
