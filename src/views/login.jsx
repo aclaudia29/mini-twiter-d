@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import useServer from '../hooks/useServer.js'
 import "./login.css"
 import useAuth from '../hooks/useAuth.js'
+
+
 
 function Login() {
   const { post, get } = useServer()
@@ -18,11 +20,13 @@ function Login() {
   }
   
   useEffect(() => {
-    if (!token) return
+    if (!token)   return
     
     const user = get({ url: '/user' })
     if (user) return navigate('/')
+
   }, [token])
+
 
   return (
     <form className='formLogin' onSubmit={handleSubmit}>
@@ -55,8 +59,15 @@ function Login() {
       <div >
         <button className='button' type="submit"> Iniciar Sesión </button>
       </div>
-    </form>
+
+      <div >
+        <p>¿No tienes cuenta?</p>
+        <Link to='/register'>Registrate</Link>
+      </div>
+
+  </form>
   )
+  
 }
 
 export default Login

@@ -10,6 +10,7 @@ import Notifications from './components/Notifications'
 import Login from './views/login'
 import Home from './views/home'
 import useAuth from './hooks/useAuth'
+import Register from './views/register'
 
 function App() {
   const {isAuthenticated} = useAuth()
@@ -23,7 +24,8 @@ function App() {
       
       <Routes>        
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login />} />  
+          <Route path="/register" element={<Register />} />  
 
           <Route element={<PrivateRoutes />}>
           </Route>
