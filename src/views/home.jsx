@@ -4,6 +4,7 @@ import Homes from "../components/Homes.jsx"
 import {apiURL} from '../config.js'
 import useAuth from "../hooks/useAuth.js"
 import Tweet from "../components/Tweet.jsx"
+import "../views/home.css"
 
 function Twitter() {
     const { get, post, delete: destroy } = useServer()
@@ -53,7 +54,7 @@ function Twitter() {
 
     return <>
        
-      <h1>Twitters</h1>
+      {/* <h1>Twitters</h1> */}
 
       <form onSubmit={createTodoHandler}>
         <input type="file" name="image" id="" />
