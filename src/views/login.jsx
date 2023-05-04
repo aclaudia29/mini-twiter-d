@@ -4,6 +4,7 @@ import useServer from '../hooks/useServer.js'
 import "./login.css"
 import useAuth from '../hooks/useAuth.js'
 
+import logo from '../image/logo nuevo.jpeg'
 
 
 function Login() {
@@ -23,13 +24,18 @@ function Login() {
     if (!token)   return
     
     const user = get({ url: '/user' })
-    if (user) return navigate('/')
+    if (user) return navigate('/home')
 
   }, [token])
 
 
   return (
+    
     <form className='formLogin' onSubmit={handleSubmit}>
+      <div>
+    <img className='logo' src={logo} alt='logo twitter' />
+    </div>
+      
       <div>
         <div className='email'>
           <label htmlFor="email">Email</label>
@@ -55,12 +61,12 @@ function Login() {
           />
         </div>
       </div>
-
+      
       <div >
         <button className='button' type="submit"> Iniciar Sesión </button>
       </div>
 
-      <div >
+      <div  className='cuenta'>
         <p>¿No tienes cuenta?</p>
         <Link to='/register'>Registrate</Link>
       </div>
@@ -69,5 +75,4 @@ function Login() {
   )
   
 }
-
 export default Login

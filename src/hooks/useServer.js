@@ -12,8 +12,11 @@ function useServer() {
     }
 
     if (data?.data?.email) {
-      const user = {user: data.data}
-      setUser(user)
+      const fields = Object.keys(data?.data)
+      if (fields.includes('avatar') && fields.includes('name')) {
+        const user = {user: data.data}
+        setUser(user)
+      }
     }
 
     if (error && error.status === "error") {
@@ -30,7 +33,7 @@ function useServer() {
   return {
     get: ({ url }) => httpService({ method: 'GET', url, token }).then(handleResponse),
     post: ({ url, body, hasImage }) => httpService({ method: 'POST', url, token, body, hasImage }).then(handleResponse),
-    put: ({ url, body }) => httpService({ method: 'PUT', url, token, body }).then(handleResponse),
+    put: ({ url, body, hasImage }) => httpService({ method: 'PUT', url, token, body, hasImage }).then(handleResponse),
     delete: ({ url }) => httpService({ method: 'DELETE', url, token })
   }
 }

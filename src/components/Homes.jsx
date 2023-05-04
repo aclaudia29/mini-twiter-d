@@ -10,7 +10,7 @@ function Posts({ post, deletePost , checkButton }) {
   };
 
   return (
-    <li className={styles.todo_item}>
+    <li className={styles.todo_item}>      
       <span className={styles.content}>
         <Link className={styles.iconLink} onClick={checkButtonHandler}>
           <img src={icon} className={styles.icon} alt="" />

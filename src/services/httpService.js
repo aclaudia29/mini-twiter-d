@@ -27,8 +27,6 @@ async function httpService({ url, method = 'GET', token = null, body = null, has
     config.body = body
   }
 
-  console.log(config)
-
   try {
     const response = await fetch(fullURL.href, config)
     const data = await response.json()

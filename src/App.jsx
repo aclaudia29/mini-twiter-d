@@ -17,13 +17,12 @@ function App() {
   return (
     <>
       <Navbar />
-      {/* <h1>Mini Twitter</h1> */}
-      <img className='logo' src={logo} alt='logo twitter' /> 
       
-      <Notifications />
-      
-      <Routes>        
-          <Route path="/" element={<Home />} />
+      <Notifications />      
+      <Routes> 
+      <Route path="/" element={<Login />} />
+
+          <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />  
           <Route path="/register" element={<Register />} />  
 
@@ -31,6 +30,7 @@ function App() {
           </Route>
        </Routes>
     </>    
+     
   )
 }
 

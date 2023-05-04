@@ -16,7 +16,25 @@
   label {
     margin-right: 5px;
   }
+  
+
   .password {
     margin-left: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    font-weight: bolder;
+    color:blueviolet
   }
-  
+
+  .email {
+    margin-left: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    font-weight: bolder;
+    color:blueviolet
+  }
+
+.cuenta {
+    margin-left: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    font-weight:100;
+    color:blueviolet
+  }
