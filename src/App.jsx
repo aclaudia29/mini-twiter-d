@@ -11,6 +11,7 @@ import Login from './views/login'
 import Home from './views/home'
 import useAuth from './hooks/useAuth'
 import Register from './views/register'
+import EditProfile from './views/EditProfile'
 
 function App() {
   const {isAuthenticated} = useAuth()
@@ -24,9 +25,11 @@ function App() {
 
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />  
-          <Route path="/register" element={<Register />} />  
+          <Route path="/register" element={<Register />} /> 
+          <Route path="/EditProfile" element={<EditProfile />} />  
 
           <Route element={<PrivateRoutes />}>
+          
           </Route>
        </Routes>
     </>    

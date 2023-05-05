@@ -14,6 +14,7 @@ function Navbar() {
       className={styles.mainNav__a}
     >Inicio</NavLink>
     {isAuthenticated && <NavLink to="/home" className={styles.mainNav__a}>HOME</NavLink>}
+
     {isAuthenticated ? <NavLink to="/" className={styles.mainNav__a} onClick={logout}>Cerrar Sesión</NavLink> : <NavLink to="/login" className={styles.mainNav__a}>Inicio Sesión</NavLink>}
   </nav>
 }
