@@ -27,14 +27,7 @@ function Twitter() {
       setTwitter(data.data)
     }
 
-    const getUser = async () => {
-      const { data } = await get({ url: '/user/' })
-      setUsers(data.data)
-    }
-
-    useEffect(() => {
-      getUser()
-    }, [])
+    
 
     const createTodoHandler = async (e) => {
       e.preventDefault()
@@ -100,13 +93,13 @@ function Twitter() {
 
           <button type="submit">Agregar Twitter</button>
 
-          <div  className='perfil'>        
+          <div className='perfil'>        
               <Link to='/EditProfile'>Editar Perfil</Link>
           </div>
       </form>
 
         {twitters && twitters.map((tweet) => (
-          <Tweet key={tweet.id} tweet={tweet} users={users} deleteTweet={deletePostHandler} likeTweet={likeTweetHandler} timeAgo={timeAgo} />
+          <Tweet key={tweet.id} tweet={tweet} user={user} deleteTweet={deletePostHandler} likeTweet={likeTweetHandler} timeAgo={timeAgo} />
         ))}
 
 

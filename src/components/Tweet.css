@@ -66,6 +66,12 @@
   height: 49px;
   border-radius: 50%;
   margin-right: 10px;
+  object-fit: cover;
+}
+
+.tweet__author-logo img {
+  height: 100%;
+  width: 100%;
 }
 
 .tweet__publish-time {

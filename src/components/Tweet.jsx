@@ -1,9 +1,13 @@
+import { useEffect, useState } from "react";
 import { apiURL } from "../config";
 import "./Tweet.css";
 import "./layout.css"
-import authorLogo from '../image/avatar.svg'
+import useServer from "../hooks/useServer";
+import defaultAvatar from '../image/avatar.svg'
 
-function Tweet({ tweet, deleteTweet, likeTweet, timeAgo, users }) {
+function Tweet({ tweet, deleteTweet, likeTweet, timeAgo, user }) {
+  const [avatar, setAvatar] = useState('')
+  const { get } = useServer()
   
   const deleteButtonHandler = (e) => {
     deleteTweet(tweet.id);
@@ -13,19 +17,25 @@ function Tweet({ tweet, deleteTweet, likeTweet, timeAgo, users }) {
     likeTweet(tweet.id)
   }
 
+  const getUser = async () => {
+    const { data } = await get({ url: `/user/${tweet.user_id}` })
+    setAvatar(data.data.avatar)
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
+  const avatarImage = avatar ? `${apiURL}/uploads/${avatar}` : defaultAvatar
+
   return (
-
     <div className="container">
-
       <div className="columna1"></div>
       <div className="columna2">
         <div className="layout">
           <div className="tweet">
             <div className="tweet__author-logo">
-              <img className='logo' src={authorLogo} alt='logo twitter' />
-              {/* <img src={`${apiURL}/user/${users.avatar}`} alt="" />*/}
-              {/* <input type="file" name="avatar" id="avatar" ref={fileRef} onChange={e => setFile(e.target.value)} accept="image/*" className="input" />
-                            */}
+              <img src={avatarImage} alt="" />
             </div>
 
             <div className="tweet__author-name">
@@ -51,8 +61,6 @@ function Tweet({ tweet, deleteTweet, likeTweet, timeAgo, users }) {
         </div>
       </div>
     </div>
-
-    
   )
 }
 export default Tweet;

@@ -1,3 +1,4 @@
+import { apiURL } from '../config.js';
 import useAuth from '../hooks/useAuth.js';
 import useServer from '../hooks/useServer.js'
 import { useEffect, useRef, useState } from 'react';
@@ -10,26 +11,27 @@ function EditProfile({  }) {
     const [showModal, setShowModal] = useState(false);
     const [name, setName] = useState(user.name)
     const [email, setEmail] = useState(user.email)
+    const [avatar, setAvatar] = useState(user.avatar)
     const [password, setPassword] = useState('')
     const [file, setFile] = useState('')
     const fileRef = useRef()
 
     useEffect(() => {
-        const savedData = getFromLocalStorage('user');
-        if (name === savedData.user.name) return
+        if (name === user.name) return
+
         const timer = setTimeout(async () => {
             const credentials = { name, email }
             const { data } = await put({ url: '/user/', body: credentials })
-            
+
             if (data.status === 'ok') toast.success('Nombre o Email han sido actualizados')
         }, 3000);
 
         return () => clearTimeout(timer);
-        }, [name, email])
+    }, [name, email])
 
-        useEffect(() => {
-
+    useEffect(() => {
         if (!password) return
+
         const timer = setTimeout(async () => {
             const credentials = { password }
             const { data } = await put({ url: '/user/password', body: credentials })
@@ -42,30 +44,33 @@ function EditProfile({  }) {
         if (!file) return
 
         (async () => {
-            const formData = new FormData(document.forms[0]);
+            const formData = new FormData(document.forms.editForm);
             const { data } = await put({ url: '/user/avatar', body: formData, hasImage: true })
             
-            if (data.status === 'ok') toast.success('Avatar ha sido actualizado')
+            if (data.status === 'ok') {
+                setAvatar(data.data.avatar)
+                toast.success('Avatar ha sido actualizado')
+            }
         })()
+        //console.log(new FormData(document.forms.editForm))
     }, [file])
 
-
-    const getFromLocalStorage = (key) => {
-        try {
-            const data = localStorage.getItem(key);
-            return data ? JSON.parse(data) : null;
-        } catch (error) {
-            console.error('Error al leer de localStorage:', error);
-            return null;
-        }
-    };
     const handleEditProfile = e => {
         e.preventDefault();
         setShowModal(true);
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+    }
     
     return <>
-        {                  <form className="formEditProfile">
+        {                  <form name="editForm" onSubmit={handleSubmit} className="formEditProfile">
+            <div>
+                <div className="imageContainer">
+                    {avatar && <img src={`${apiURL}/uploads/${avatar}`} alt="" />}
+                </div>
+            </div>
                             <div className="inputContainer">
                                 <label htmlFor="avatar" className="label">Avatar</label>
                             </div>
