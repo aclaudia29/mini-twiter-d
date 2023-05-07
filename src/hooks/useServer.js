@@ -1,41 +1,47 @@
-import { toast } from 'sonner'
-import httpService from '../services/httpService.js'
-import useAuth from './useAuth.js'
+import { toast } from "sonner";
+import httpService from "../services/httpService.js";
+import useAuth from "./useAuth.js";
 
 function useServer() {
-  const { token, setUser } = useAuth()
+  const { token, setUser } = useAuth();
 
   const handleResponse = ({ data, loading, error, url }) => {
-
-    if (data?.status === 'ok' && url === '/login') {
-      setUser({ token: data.data })
+    if (data?.status === "ok" && url === "/login") {
+      setUser({ token: data.data });
     }
 
     if (data?.data?.email) {
-      const fields = Object.keys(data?.data)
-      if (fields.includes('avatar') && fields.includes('name')) {
-        const user = {user: data.data}
-        setUser(user)
+      const fields = Object.keys(data?.data);
+      if (fields.includes("avatar") && fields.includes("name")) {
+        const user = { user: data.data };
+        setUser(user);
       }
     }
 
     if (error && error.status === "error") {
-      toast.error('usuario o contraseña incorrecto')
+      toast.error("usuario o contraseña incorrecto");
     } else {
-        if (error){
-          toast.error(error.message)
-        }
+      if (error) {
+        toast.error(error.message);
+      }
     }
 
-    return { data, loading, error }
-  }
-  
+    return { data, loading, error };
+  };
+
   return {
-    get: ({ url }) => httpService({ method: 'GET', url, token }).then(handleResponse),
-    post: ({ url, body, hasImage }) => httpService({ method: 'POST', url, token, body, hasImage }).then(handleResponse),
-    put: ({ url, body, hasImage }) => httpService({ method: 'PUT', url, token, body, hasImage }).then(handleResponse),
-    delete: ({ url }) => httpService({ method: 'DELETE', url, token })
-  }
+    get: ({ url }) =>
+      httpService({ method: "GET", url, token }).then(handleResponse),
+    post: ({ url, body, hasImage }) =>
+      httpService({ method: "POST", url, token, body, hasImage }).then(
+        handleResponse
+      ),
+    put: ({ url, body, hasImage }) =>
+      httpService({ method: "PUT", url, token, body, hasImage }).then(
+        handleResponse
+      ),
+    delete: ({ url }) => httpService({ method: "DELETE", url, token }),
+  };
 }
 
-export default useServer
+export default useServer;

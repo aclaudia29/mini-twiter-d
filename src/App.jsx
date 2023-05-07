@@ -15,23 +15,24 @@ import EditProfile from './views/EditProfile'
 
 function App() {
   const {isAuthenticated} = useAuth()
+  
   return (
     <>
       <Navbar />
       
       <Notifications />      
-      <Routes> 
-      <Route path="/" element={<Login />} />
+        <Routes> 
+          <Route path="/" element={<Login />} />
 
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login />} />  
-          <Route path="/register" element={<Register />} /> 
-          <Route path="/EditProfile" element={<EditProfile />} />  
+              <Route path="/home" element={<Home />} />
+              <Route path="/login" element={<Login />} />  
+              <Route path="/register" element={<Register />} /> 
+              <Route path="/EditProfile" element={<EditProfile />} />  
 
           <Route element={<PrivateRoutes />}>
           
           </Route>
-       </Routes>
+        </Routes>
     </>    
      
   )

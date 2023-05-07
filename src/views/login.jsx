@@ -19,10 +19,10 @@ function Login() {
     console.log(credentials)
     await post({ url: '/login', body: credentials })
   }
-  
+
   useEffect(() => {
-    if (!token)   return
-    
+    if (!token) return
+
     const user = get({ url: '/user' })
     if (user) return navigate('/home')
 
@@ -30,13 +30,11 @@ function Login() {
 
 
   return (
-    
+
     <form className='formLogin' onSubmit={handleSubmit}>
       <div>
-    <img className='logo' src={logo} alt='logo twitter' />
-    </div>
+        <img className='logo' src={logo} alt='logo twitter' />
       
-      <div>
         <div className='email'>
           <label htmlFor="email">Email</label>
           <input
@@ -61,18 +59,16 @@ function Login() {
           />
         </div>
       </div>
-      
+
       <div >
         <button className='button' type="submit"> Iniciar Sesión </button>
       </div>
 
-      <div  className='cuenta'>
+      <div className='cuenta'>
         <p>¿No tienes cuenta?</p>
         <Link to='/register'>Registrate</Link>
       </div>
-
-  </form>
+    </form>
   )
-  
 }
 export default Login

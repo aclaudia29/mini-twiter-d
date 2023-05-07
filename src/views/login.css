@@ -10,13 +10,14 @@
     width: 100%;
     display: center
   }
+
   div {
     margin: 5px;
   }
+
   label {
     margin-right: 5px;
   }
-  
 
   .password {
     margin-left: 25px;
@@ -32,7 +33,7 @@
     color:blueviolet
   }
 
-.cuenta {
+  .cuenta {
     margin-left: 25px;
     font-family: Verdana, Geneva, Tahoma, sans-serif ;
     font-weight:100;

@@ -1,41 +1,46 @@
-import { apiURL } from '../config.js'
+import { apiURL } from "../config.js";
 
-async function httpService({ url, method = 'GET', token = null, body = null, hasImage = false }) {
-  if (!url.startsWith('/')) throw new Error('URL Must Start With a Slash (/)')
+async function httpService({
+  url,
+  method = "GET",
+  token = null,
+  body = null,
+  hasImage = false,
+}) {
+  if (!url.startsWith("/")) throw new Error("URL Must Start With a Slash (/)");
 
-  const fullURL = new URL(apiURL + url)
+  const fullURL = new URL(apiURL + url);
   const config = {
     method,
     headers: {
-      'Accept': 'application/json'
-    }
-  }
+      Accept: "application/json",
+    },
+  };
 
   if (token) {
-    config.headers.Authorization = token
+    config.headers.Authorization = token;
   }
 
   if (!hasImage) {
-    config.headers['Content-Type'] = 'application/json'
+    config.headers["Content-Type"] = "application/json";
   }
 
   if (body && !hasImage) {
-    config.body = JSON.stringify(body)
+    config.body = JSON.stringify(body);
   }
 
   if (body && hasImage) {
-    config.body = body
+    config.body = body;
   }
 
   try {
-    const response = await fetch(fullURL.href, config)
-    const data = await response.json()
+    const response = await fetch(fullURL.href, config);
+    const data = await response.json();
 
-    return { data, url, loading: false, error: data.error || null }
-
+    return { data, url, loading: false, error: data.error || null };
   } catch (error) {
-    return { data: null, loading: false, error, url }
+    return { data: null, loading: false, error, url };
   }
 }
 
-export default httpService
+export default httpService;

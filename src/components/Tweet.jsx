@@ -8,7 +8,7 @@ import defaultAvatar from '../image/avatar.svg'
 function Tweet({ tweet, deleteTweet, likeTweet, timeAgo, user }) {
   const [avatar, setAvatar] = useState('')
   const { get } = useServer()
-  
+
   const deleteButtonHandler = (e) => {
     deleteTweet(tweet.id);
   };
@@ -30,14 +30,13 @@ function Tweet({ tweet, deleteTweet, likeTweet, timeAgo, user }) {
 
   return (
     <div className="container">
-      <div className="columna1"></div>
-      <div className="columna2">
+      <div className="Sidebar"></div>
+      <div className="Principal">
         <div className="layout">
           <div className="tweet">
             <div className="tweet__author-logo">
               <img src={avatarImage} alt="" />
             </div>
-
             <div className="tweet__author-name">
               {tweet.email}
             </div>
