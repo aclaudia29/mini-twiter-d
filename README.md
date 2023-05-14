@@ -5,7 +5,7 @@
 
 - 	Visualizar la portada de la web con el listado de los últimos tweets de todos los usuarios.
 - 	Visualizar el detalle de cada tweet.
-- 	Ver el perfil de un usuario con el listado de sus últimos tweets.
+- 	Ver el perfil de un usuario con el listado de sus últimos tweets, haciendo click en su avatar.
 - 	Registro con email y password.
 - 	Login con email y password.
 
