@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+
 import useServer from '../hooks/useServer.js'
-import "./login.css"
 import useAuth from '../hooks/useAuth.js'
-
-import logo from '../image/logo nuevo.jpeg'
-
+import logo from '../image/logo-nuevo.jpeg'
+import "./login.css"
 
 function Login() {
   const { post, get } = useServer()
@@ -16,16 +15,25 @@ function Login() {
     e.preventDefault()
 
     const credentials = Object.fromEntries(new FormData(e.target))
-    console.log(credentials)
     await post({ url: '/login', body: credentials })
   }
+
+  
+  const getUser = async () => {
+    const { data } = await get({ url: '/user' })
+    console.log(data.status)
+    if (data.status === 'ok') {
+      alert('Bienvenidos!!!')
+      return navigate('/')      
+    }
+    
+  }
+
 
   useEffect(() => {
     if (!token) return
 
-    const user = get({ url: '/user' })
-    if (user) return navigate('/home')
-
+    getUser()
   }, [token])
 
 
@@ -34,32 +42,31 @@ function Login() {
     <form className='formLogin' onSubmit={handleSubmit}>
       <div>
         <img className='logo' src={logo} alt='logo twitter' />
-      
-        <div className='email'>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            placeholder="ingresar email"
-          />
-        </div>
+          
+              <div className='email'>
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  placeholder="ingresar email"
+                />
+              </div>
 
-        <div className='password'>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="password"
-            required
-            placeholder="ingresar contraseña"
-          />
-        </div>
-      </div>
-
+              <div className='password'>
+                <label htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="password"
+                  required
+                  placeholder="ingresar contraseña"
+                />
+              </div>
+          </div>
       <div >
         <button className='button' type="submit"> Iniciar Sesión </button>
       </div>
@@ -68,6 +75,7 @@ function Login() {
         <p>¿No tienes cuenta?</p>
         <Link to='/register'>Registrate</Link>
       </div>
+  
     </form>
   )
 }

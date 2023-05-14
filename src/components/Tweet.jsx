@@ -4,8 +4,17 @@ import "./Tweet.css";
 import "./layout.css"
 import useServer from "../hooks/useServer";
 import defaultAvatar from '../image/avatar.svg'
+import useAuth from "../hooks/useAuth.js";
+import { Link } from "react-router-dom";
 
-function Tweet({ tweet, deleteTweet, likeTweet, timeAgo, user }) {
+import TimeAgo from 'javascript-time-ago'
+import es from 'javascript-time-ago/locale/es'
+
+TimeAgo.addDefaultLocale(es)
+const timeAgo = new TimeAgo('es-ES')
+
+function Tweet({ tweet, deleteTweet, likeTweet }) {
+  const { isAuthenticated, user } = useAuth()
   const [avatar, setAvatar] = useState('')
   const { get } = useServer()
 
@@ -20,10 +29,11 @@ function Tweet({ tweet, deleteTweet, likeTweet, timeAgo, user }) {
   const getUser = async () => {
     const { data } = await get({ url: `/user/${tweet.user_id}` })
     setAvatar(data.data.avatar)
+   
   }
 
   useEffect(() => {
-    getUser()
+    getUser()    
   }, [])
 
   const avatarImage = avatar ? `${apiURL}/uploads/${avatar}` : defaultAvatar
@@ -34,12 +44,14 @@ function Tweet({ tweet, deleteTweet, likeTweet, timeAgo, user }) {
       <div className="Principal">
         <div className="layout">
           <div className="tweet">
-            <div className="tweet__author-logo">
-              <img src={avatarImage} alt="" />
-            </div>
-            <div className="tweet__author-name">
-              {tweet.email}
-            </div>
+            <Link to={'/users/' + tweet.user_id}>
+              <div className="tweet__author-logo">
+                <img src={avatarImage} alt="" />
+              </div>
+              <div className="tweet__author-name">
+                {tweet.email}
+              </div>
+            </Link>
             <div className="tweet__publish-time">
               {timeAgo.format(new Date(tweet.created_at))}
             </div>
@@ -49,17 +61,14 @@ function Tweet({ tweet, deleteTweet, likeTweet, timeAgo, user }) {
             <div>
               <img src={`${apiURL}/uploads/${tweet.image}`} alt="" />
             </div>
-            <button className="tweet-delete" onClick={deleteButtonHandler}>
-              Borrar Tweet
-            </button>
-            <button className="tweet-like" onClick={likeButtonHandler}>
-              Like
-              <span>{tweet.likes}</span>
-            </button>
+            </div>
+            { isAuthenticated && user.id === tweet.user_id && <button className="tweet-delete" onClick={deleteButtonHandler}>Borrar Tweet</button>}
+            { isAuthenticated ? 
+              <button className="tweet-like" onClick={likeButtonHandler}>Like <span>{tweet.likes}</span></button> :
+              <p className="tweet-like">Like <span>{tweet.likes}</span></p>} 
           </div>
-        </div>
-      </div>
-    </div>
-  )
+            </div>
+          </div>
+          )
 }
 export default Tweet;

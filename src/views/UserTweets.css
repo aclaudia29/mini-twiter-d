@@ -1,0 +1,34 @@
+.container {
+  background-color: #f2f2f2;
+  padding: 0px;
+  border: 1px solid #ccc;
+}
+
+.tweet__author-user {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: white;
+}
+
+.tweet__author-user img {
+  width: 200px;
+  height: 200px; 
+  margin-right: 10px;
+  border-radius: 50%; 
+}
+.user-email {
+  margin-bottom: 5px;
+  color: #e309be;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.user-info {
+  display: inline-block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  color: blueviolet;
+font-size: 20px;    
+}

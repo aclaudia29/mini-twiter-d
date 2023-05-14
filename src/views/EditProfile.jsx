@@ -2,14 +2,13 @@ import { apiURL } from '../config.js';
 import useAuth from '../hooks/useAuth.js';
 import useServer from '../hooks/useServer.js'
 import { useEffect, useRef, useState } from 'react';
-//import { toast } from 'react-toastify';
 import { toast } from 'sonner'
 import "./EditProfile.css"
 
 function EditProfile({ }) {
     const { user } = useAuth()
     const { put } = useServer()
-    const [showModal, setShowModal] = useState(false);
+    
     const [name, setName] = useState(user.name)
     const [email, setEmail] = useState(user.email)
     const [avatar, setAvatar] = useState(user.avatar)
@@ -22,7 +21,8 @@ function EditProfile({ }) {
 
         const timer = setTimeout(async () => {
             const credentials = { name, email }
-            const { data } = await put({ url: '/user/', body: credentials })
+            const { data } = await put({ url: '/user', body: credentials })
+           
 
             if (data.status === 'ok') toast.success('Nombre o Email han sido actualizados')
         }, 3000);
@@ -56,11 +56,7 @@ function EditProfile({ }) {
         //console.log(new FormData(document.forms.editForm))
     }, [file])
 
-    const handleEditProfile = e => {
-        e.preventDefault();
-        setShowModal(true);
-    };
-
+  
     const handleSubmit = (e) => {
         e.preventDefault()
     }

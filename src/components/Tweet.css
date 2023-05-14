@@ -56,10 +56,8 @@
     cursor: pointer;
 }
 
-.tweet button.tweet-like:hover {
-  text-decoration: underline;
-  
-}
+
+
 
 .tweet__author-logo {
   width: 49px;
@@ -73,6 +71,8 @@
   height: 100%;
   width: 100%;
 }
+
+
 
 .tweet__publish-time {
   margin-left: 5px;
@@ -92,6 +92,29 @@
   font-weight: 300;
   color: black;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
-  
-  
+    
 } 
+.input-tweet{
+
+    width: 400px;
+    height:70px;
+    font-family: 'Arial Narrow Bold', sans-serif;
+    font-size: 16px;    
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid rosybrown;
+    border-radius: 15px;
+    
+}
+
+.file-input {
+ 
+  border: 1px solid rosybrown;
+  padding: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+.editar-perfil {
+  font-family: Arial;
+  color:  #e309be;
+}

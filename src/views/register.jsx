@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import useServer from '../hooks/useServer.js'
 
-import logo from '../image/logo nuevo.jpeg'
+import logo from '../image/logo-nuevo.jpeg'
 
 function Register() {
     const { post, get } = useServer()
@@ -14,7 +14,6 @@ function Register() {
         const credentials = Object.fromEntries(new FormData(e.target))
         const { data } = await post({ url: '/user', body: credentials })
         //console.log(credentials)
-
 
         if ({ data }) return navigate('/login')
     }
