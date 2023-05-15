@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Link } from 'react-router-dom'
 
+import styles from './TweetForm.module.css'
+
 function TweetForm({ createTodoHandler }) {
   const [inputValue, setInputValue] = useState('')
 
@@ -8,7 +10,7 @@ function TweetForm({ createTodoHandler }) {
     setInputValue(target.value)
   }
 
-  return <form onSubmit={createTodoHandler}>
+  return <form onSubmit={createTodoHandler} className={styles.form}>
     {/*<input type="file" name="image" id="" />*/}
     <input type="file" name="image" id="file-input" className="file-input" />
     <div>

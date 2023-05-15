@@ -29,18 +29,17 @@ function Tweet({ tweet, deleteTweet, likeTweet }) {
   const getUser = async () => {
     const { data } = await get({ url: `/user/${tweet.user_id}` })
     setAvatar(data.data.avatar)
-   
+
   }
 
   useEffect(() => {
-    getUser()    
+    getUser()
   }, [])
 
   const avatarImage = avatar ? `${apiURL}/uploads/${avatar}` : defaultAvatar
 
   return (
     <div className="container">
-      <div className="Sidebar"></div>
       <div className="Principal">
         <div className="layout">
           <div className="tweet">
@@ -61,14 +60,15 @@ function Tweet({ tweet, deleteTweet, likeTweet }) {
             <div>
               <img src={`${apiURL}/uploads/${tweet.image}`} alt="" />
             </div>
-            </div>
-            { isAuthenticated && user.id === tweet.user_id && <button className="tweet-delete" onClick={deleteButtonHandler}>Borrar Tweet</button>}
-            { isAuthenticated ? 
-              <button className="tweet-like" onClick={likeButtonHandler}>Like <span>{tweet.likes}</span></button> :
-              <p className="tweet-like">Like <span>{tweet.likes}</span></p>} 
           </div>
-            </div>
-          </div>
-          )
+          {isAuthenticated && user.id === tweet.user_id && <button className="tweet-delete" onClick={deleteButtonHandler}>Borrar Tweet</button>}
+          {isAuthenticated ?
+            <button className="tweet-like" onClick={likeButtonHandler}>Like <span>{tweet.likes}</span></button> :
+            <p className="tweet-like">Like <span>{tweet.likes}</span></p>}
+        </div>
+      </div>
+    </div>
+  )
 }
+
 export default Tweet;

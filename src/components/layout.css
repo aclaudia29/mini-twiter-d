@@ -1,17 +1,7 @@
-.container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-    background-color: #f3f6f8;
-  }
-  
-  .Sidebar {
-    grid-column: 1 / 2;
-  }
-  
-  .Principal {
-    grid-column: 2/2;
-    background-color: white;      
-  }
-  
-  
+.Principal {
+  background-color: #fff;
+  border-radius: 7px;
+  box-shadow: 0 0 8px rgba(0,0,0,.15);
+  margin-bottom: 3em;
+  padding-bottom: 1em;
+}
