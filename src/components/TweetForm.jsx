@@ -1,8 +1,6 @@
 import { useState } from "react"
 import { Link } from 'react-router-dom'
 
-import styles from './Tweet.css'
-
 function TweetForm({ createTodoHandler }) {
   const [inputValue, setInputValue] = useState('')
 
