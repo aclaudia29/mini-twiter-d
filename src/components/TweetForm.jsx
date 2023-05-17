@@ -11,13 +11,11 @@ function TweetForm({ createTodoHandler }) {
   }
 
   return <form onSubmit={createTodoHandler} className={styles.form}>
-    {/*<input type="file" name="image" id="" />*/}
     <input type="file" name="image" id="file-input" className="file-input" />
     <div>
           <textarea name="text" value={inputValue} className="input-tweet" maxLength={250} placeholder="What is happening?!" onChange={inputChangeHandler} required />
     </div>
     <button type="submit">Agregar Twitter</button>
-    
       
       <div className='perfil'>
           <Link to='/EditProfile' className='editar-perfil'>Editar Perfil</Link>

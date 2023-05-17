@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-
+import { toast } from 'sonner'
 import useServer from '../hooks/useServer.js'
 import useAuth from '../hooks/useAuth.js'
-import logo from '../image/logo-nuevo.jpeg'
+import logo from '../image/logo-nuevo.png'
 import "./login.css"
 
 function Login() {
@@ -18,18 +18,15 @@ function Login() {
     await post({ url: '/login', body: credentials })
   }
 
-  
   const getUser = async () => {
     const { data } = await get({ url: '/user' })
-    console.log(data.status)
+   
     if (data.status === 'ok') {
-      alert('Bienvenidos!!!')
+      toast.success("Bienvenido"),1000
       return navigate('/')      
     }
-    
   }
-
-
+    
   useEffect(() => {
     if (!token) return
 

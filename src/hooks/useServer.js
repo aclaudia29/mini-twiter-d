@@ -9,7 +9,9 @@ function useServer() {
 
   const handleResponse = ({ data, loading, error, url }) => {
     if (data.message === 'Token incorrecto') {
+      
       logout()
+
       navigate('/')
     }
 
@@ -23,6 +25,7 @@ function useServer() {
 
     if (error && error.status === "error") {
       toast.error("usuario o contraseña incorrecto");
+      
     } else {
       if (error) {
         toast.error(error.message);

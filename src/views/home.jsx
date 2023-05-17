@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import useServer from "../hooks/useServer.js"
 import useAuth from "../hooks/useAuth.js"
 import Tweet from "../components/Tweet.jsx"
-import logo from '../image/logo-nuevo.jpeg'
+import logo from '../image/logo-nuevo.png'
 import "../views/home.css"
 import TweetForm from "../components/TweetForm.jsx"
 

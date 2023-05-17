@@ -22,7 +22,6 @@ function EditProfile({ }) {
         const timer = setTimeout(async () => {
             const credentials = { name, email }
             const { data } = await put({ url: '/user', body: credentials })
-           
 
             if (data.status === 'ok') toast.success('Nombre o Email han sido actualizados')
         }, 3000);
@@ -53,7 +52,7 @@ function EditProfile({ }) {
                 toast.success('Avatar ha sido actualizado')
             }
         })()
-        //console.log(new FormData(document.forms.editForm))
+       
     }, [file])
 
   

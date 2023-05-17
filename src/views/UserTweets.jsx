@@ -73,7 +73,6 @@ const avatarImage = avatar ? `${apiURL}/uploads/${avatar}` : defaultAvatar
   }
 
   return (
-    
     <>
 
       <div className="container">
@@ -81,7 +80,8 @@ const avatarImage = avatar ? `${apiURL}/uploads/${avatar}` : defaultAvatar
           <img src={avatarImage} alt="" />
           <div className="user-info">
             <div className="user-email">{tweetsUser.email}</div>
-            <div className="user-info">({id}) {tweetsUser.name}</div>
+            <div className="user-info"> {tweetsUser.name}</div>
+            <div className="user-fecha"> <p>Se unió el:</p>{tweetsUser.created_at}  </div>       
           </div>
         </div>
       </div>

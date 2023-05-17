@@ -3,6 +3,7 @@
   margin: 0 auto;
   max-width: 500px;
   width: 100%;
+  ;
 }
 
 .tweet__author-user {
@@ -10,20 +11,24 @@
   align-items: center;
   border: 1px solid #ccc;
   padding: 10px;
-  background-color: white;
+  background-color: white;  
+  border-radius: 7px;
+  box-shadow: 0 0 8px rgba(0,0,0,.15);
 }
 
 .tweet__author-user img {
   width: 200px;
   height: 200px; 
   margin-right: 10px;
-  border-radius: 50%; 
+  border-radius: 7px;
+  box-shadow: 0 0 8px rgba(0,0,0,.15);
+  
 }
 .user-email {
   margin-bottom: 5px;
   color: #e309be;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+  font-size: 18px;
 }
 
 .user-info {
@@ -31,5 +36,13 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bolder;
   color: blueviolet;
-font-size: 20px;    
+font-size: 15px;    
+}
+
+.user-fecha{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  color:darkgray ;
+font-size: 10px; 
+content: attr(data-date);
 }
